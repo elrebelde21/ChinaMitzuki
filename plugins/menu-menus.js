@@ -29,8 +29,8 @@ const defaultMenu = {
 before: `「 %wm 」
  
 Hola 👋🏻 *%name* como esta bby 💋🔥
- *ღ Dueña: La China 💋❤️‍🔥
-*ღ Creadora:* ${wm}
+
+*ღ Creadora:* La China 💋❤️‍🔥
 *ღ Contacto:* ${ig}
 *ღ Fecha:* %fecha
 *ღ Hora:* %hora (🇦🇷) 

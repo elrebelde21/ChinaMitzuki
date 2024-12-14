@@ -81,7 +81,8 @@ global.db.chain = chain(global.db.data)
 loadDatabase()
 
 global.authFile = `BotSession`
-const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
+const authState = await useMultiFileAuthState(global.authFile);
+const { state, saveState, saveCreds } = authState;
 const msgRetryCounterMap = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion()

@@ -24,7 +24,7 @@ import { Boom } from '@hapi/boom'
 import pkg from 'google-libphonenumber'
 const { PhoneNumberUtil } = pkg
 const phoneUtil = PhoneNumberUtil.getInstance()
-const {useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, MessageRetryMap, makeCacheableSignalKeyStore,  jidNormalizedUser } = await import('@whiskeysockets/baileys')
+import {useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, MessageRetryMap, makeCacheableSignalKeyStore,  jidNormalizedUser } from '@whiskeysockets/baileys';
 import moment from 'moment-timezone'
 import NodeCache from 'node-cache'
 import readline from 'readline'

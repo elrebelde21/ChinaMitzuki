@@ -10,12 +10,11 @@ import moment from 'moment-timezone'
 //---------[ Añada los numeros a ser Propietario/a ]---------
 
 global.owner = [
-  ['14697106545', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', true],
-  ['5214774444444', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕺𝖜𝖓𝖊𝖗 💋', true],
-  ['593968585383'],
-  ['573147616444'],
-  ['5492266613038']
-]
+['14697106545', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', true],
+['5214774444444', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕺𝖜𝖓𝖊𝖗 💋', true],
+['593968585383'],
+['573147616444'],
+['5492266613038']]
 global.mods = []
 global.prems = []
 
@@ -78,6 +77,17 @@ global.moment = moment
 
 global.packname = '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 💋'
 global.author = 'by: elrebelde21'
+
+//------------------------[ Contacto ]-----------------------------
+
+global.official = [ // Agregate si eres Owner
+["14697106545", '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', 1], 
+["5214774444444", '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕺𝖜𝖓𝖊𝖗 💋', 1]]
+
+global.mail = '' // Add email
+global.desc = '' // Add short description (20 caractres max)
+global.desc2 = '' // Add long description (90 caractres max) (Este parámetro se aplicará sólo si su whasapp no tiene descripción)
+global.country = '' // Add country, example: 🇪🇨
 
 //------------[ Versión | Nombre | cuentas ]------------
 

@@ -8,14 +8,11 @@ let info = `*✅ BIENVENIDO A LOS GRUPOS OFICIALES*
 ➤ Grupo del Colaboracion LoliBot, GataBot-MD
  *${nnnt}*
 
-➤ Infomarte sobre las nuevas actualizaciones/novedades/test sobre LoliBot aqui:
+➤ Infomarte sobre las nuevas actualizaciones/novedades/test sobre ${wm} aqui:
 *${nna2}*
  
 ➤ Canal oficial donde encontrarán memes, video, novedades sobre cualquier bot, etc:
 *${nna}*
-
-➤ *¡Visita todos los enlaces oficiales en un único lugar!*
-https://atom.bio/lolibot
 
  ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 

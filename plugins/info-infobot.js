@@ -83,6 +83,7 @@ let latensi = speed() - timestamp;
 getSystemInfo().then(async (data) => {
 let teks = `╭─────[ *INFO DEL BOT* ]────✧
 ├ 💗 *CREADORA:* ${wm}
+┃💕 *CONTACTO:* ${ig}
 ├ ✅ *VERSION ACTUAL:* ${vs}
 ├ 🎳 *PREFIJO:* ${usedPrefix}
 ├ 🦜 *GRUPOS TOTALES:* ${groupsIn.length}

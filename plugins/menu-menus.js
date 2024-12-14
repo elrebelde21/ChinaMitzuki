@@ -28,9 +28,10 @@ let tags = {'main': 'ℹ️ INFOBOT',
 const defaultMenu = {
 before: `「 %wm 」
  
-Hola 👋🏻 *%name* como esta bn 😘
-
- *ღ Dueña:* china 🥰
+Hola 👋🏻 *%name* como esta bb 😘
+ 
+*ღ Creadora:* ${wm}
+*ღ Contacto:* ${ig}
 *ღ Fecha:* %fecha
 *ღ Hora:* %hora (🇦🇷) 
 *ღ Usuario:* %totalreg
@@ -44,7 +45,7 @@ Hola 👋🏻 *%name* como esta bn 😘
 
 *ღ Usuario registrados:* %rtotalreg de %totalreg
 
-${[`*\`✅ Activar tu bot 24/7 activo en SkyPlus\`*\nhttps://youtu.be/qyxhetqeO1U?si=XxWhDOAi3OfmOjBY`, `Seguirme el ig bb😍\nhttps://www.instagram.com/mitzuki_chinita?igsh=YzljYTk1ODg3Zg==`, `Unirte a nuestro canal de WhatsApp y informarte de todas la novedades/Actualizaciones del bot y mas\nhttps://whatsapp.com/channel/0029Vau57ykEwEk5CgosvU3v`, `❤ Seguirme el tiktok bb\ntiktok.com/@elrebeldeofc`, `Darle like al seguirte video bb\nhttps://youtu.be/vS1aOTGeL3c?si=q3zz5jVBnXbkIBwW`, `si te agrada el bot dejar tu estrellitas en el repositorio oficial\nhttps://github.com/elrebelde21/LoliBot-MD`].getRandom()}
+${[`*\`✅ Activar tu bot 24/7 activo en SkyPlus\`*\nhttps://youtu.be/fZbcCLpSH6Y?si=zWgmfERPTZn32DhE`, `Seguirme el ig bb😍\nhttps://www.instagram.com/mitzuki_chinita?igsh=YzljYTk1ODg3Zg==`, `Unirte a nuestro canal de WhatsApp y informarte de todas la novedades/Actualizaciones del bot y mas\nhttps://whatsapp.com/channel/0029Vau57ykEwEk5CgosvU3v`, `❤ Seguirme el tiktok bb\ntiktok.com/@elrebeldeofc`, `Darle like al seguirte video bb\nhttps://youtu.be/vS1aOTGeL3c?si=q3zz5jVBnXbkIBwW`, `si te agrada el bot dejar tu estrellitas en el repositorio oficial\n${md}`].getRandom()}
 `.trimStart(),
 header: '┌───⊷ *%category* ',
 body: ' ┊□ _%cmd_ %islimit %isPremium',
@@ -95,7 +96,7 @@ let uptime = clockString(_uptime)
 let taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 let totalreg = Object.keys(global.db.data.users).length
 let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
-let botOfc = (conn.user.jid == global.conn.user.jid) ? `*ღ Bot Ofc:* wa.me/${global.conn.user.jid.split`@`[0]}` : `ღ Soy un sub bot del:* wa.me/${global.conn.user.jid.split`@`[0]} la princesa 👸👑`
+let botOfc = (conn.user.jid == global.conn.user.jid) ? `*ღ Bot Ofc:* wa.me/${global.conn.user.jid.split`@`[0]}` : `*ღ Soy un sub bot del:* wa.me/${global.conn.user.jid.split`@`[0]} la princesa 👸👑`
 let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
 return {
 help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
@@ -177,7 +178,7 @@ handler.help = ['help']
 handler.tags = ['main']
 //handler.command = ['menucompleto', 'help', 'fullmenu'] 
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|m|\?)$/i
-handler.register = false
+handler.register = true
 handler.exp = 3
 export default handler
 

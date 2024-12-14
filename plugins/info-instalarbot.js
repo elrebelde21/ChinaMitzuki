@@ -38,19 +38,19 @@ ${md}
 
 * termux-setup-storage 
 
-* apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/elrebelde21/LoliBot-MD/master/install.sh | bash
+* apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/elrebelde21/ChinaMitzuki/master/install.sh | bash
 
 \`📌 𝙊𝙋𝘾𝙄𝙊𝙉: 2 𝘼𝙍𝘾𝙃𝙄𝙑𝙊\`
 > *https://youtu.be/i1xjB4bmYCc*
 
 *• Descarga los archivos:*
-https://github.com/elrebelde21/LoliBot-MD/archive/refs/heads/master.zip
+https://github.com/elrebelde21/ChinaMitzuki/archive/refs/heads/master.zip
 
 * termux-setup-storage
 
 * apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 
-* cd storage/downloads/LoliBot-MD-master/LoliBot-MD-master 
+* cd storage/downloads/ChinaMitzuki-master/ChinaMitzuki-master 
 
 * yarn install && npm install 
 

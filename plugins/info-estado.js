@@ -14,8 +14,8 @@ let uptime = clockString(_uptime)
 let estado = `${pickRandom([`*┌───⊷ *ミ🤖 Estado del Bot 🤖彡*\n┆ *=> Bot activo ✅*\n┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┆ *=> Bot uso público ✅️*\n┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┆=> 𝘼𝙘𝙩𝙞𝙫𝙤 𝙙𝙪𝙧𝙖𝙣𝙩𝙚\n┆=> ${uptime} ✅\n╰──────────────────`, `*Online ${uptime} ✅*`, `*Saturado 🥵*`, `Estoy activo desde: ${uptime}`, `Estamos activo papu 🤙`])}
 `.trim()
 //await conn.sendMessage(m.chat, {text: estado, mentions: [m.sender]}, {quoted: fkontak})
-await conn.reply(m.chat, `┌───⊷ *ミ🤖 Estado del Bot 🤖彡*
-┆ *=> Botsita online 💋*
+await conn.reply(m.chat, `┏───⊷ *ミ🤖 Estado del Bot 🤖彡*
+┆ *=> ${wm} online 💋*
 ┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 ┆ *=> Bot uso público ✅️*
 ┆┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈

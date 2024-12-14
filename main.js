@@ -24,7 +24,7 @@ import { Boom } from '@hapi/boom'
 import pkg from 'google-libphonenumber'
 const { PhoneNumberUtil } = pkg
 const phoneUtil = PhoneNumberUtil.getInstance()
-import {useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, MessageRetryMap, makeCacheableSignalKeyStore,  jidNormalizedUser } from '@whiskeysockets/baileys';
+const {useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, MessageRetryMap, makeCacheableSignalKeyStore,  jidNormalizedUser } = await import('@whiskeysockets/baileys')
 import moment from 'moment-timezone'
 import NodeCache from 'node-cache'
 import readline from 'readline'
@@ -81,11 +81,10 @@ global.db.chain = chain(global.db.data)
 loadDatabase()
 
 global.authFile = `BotSession`
-const authState = useMultiFileAuthState(global.authFile);
-const { state, saveState, saveCreds } = authState;
+const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
 const msgRetryCounterMap = (MessageRetryMap) => { }
 const msgRetryCounterCache = new NodeCache()
-const {version} = fetchLatestBaileysVersion()
+const {version} = await fetchLatestBaileysVersion()
 let phoneNumber = global.botNumberCode
 const methodCodeQR = process.argv.includes("qr")
 const methodCode = !!phoneNumber || process.argv.includes("code")
@@ -112,7 +111,7 @@ opcion = '1'
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
 let lineM = '⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ ⋯ 》'
-opcion = question(`╭${lineM}  
+opcion = await question(`╭${lineM}  
 ┊ ${chalk.blueBright('╭┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}
 ┊ ${chalk.blueBright('┊')} ${chalk.blue.bgBlue.bold.cyan('MÉTODO DE VINCULACIÓN')}
 ┊ ${chalk.blueBright('╰┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅')}   
@@ -156,7 +155,7 @@ generateHighQualityLinkPreview: true,
 syncFullHistory: false,
 getMessage: async (clave) => {
 let jid = jidNormalizedUser(clave.remoteJid)
-let msg = store.loadMessage(jid, clave.id)
+let msg = await store.loadMessage(jid, clave.id)
 return msg?.message || ""
 },
 msgRetryCounterCache, // Resolver mensajes en espera
@@ -176,16 +175,16 @@ if (!!phoneNumber) {
 addNumber = phoneNumber.replace(/[^0-9]/g, '')
 } else {
 do {
-phoneNumber = question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Escriba su número\n\nEjemplo: 5491168xxxx\n\n\n\n")))
+phoneNumber = await question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Escriba su número\n\nEjemplo: 5491168xxxx\n\n\n\n")))
 phoneNumber = phoneNumber.replace(/\D/g,'')
 if (!phoneNumber.startsWith('+')) {
 phoneNumber = `+${phoneNumber}`
 }
-} while (!isValidPhoneNumber(phoneNumber))
+} while (!await isValidPhoneNumber(phoneNumber))
 rl.close()
 addNumber = phoneNumber.replace(/\D/g, '')
 setTimeout(async () => {
-let codeBot = conn.requestPairingCode(addNumber)
+let codeBot = await conn.requestPairingCode(addNumber)
 codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
 console.log(chalk.bold.white(chalk.bgMagenta(`CÓDIGO DE VINCULACIÓN:`)), chalk.bold.white(chalk.white(codeBot)))
 }, 2000)
@@ -197,14 +196,14 @@ conn.well = false
 
 if (!opts['test']) {
 setInterval(async () => {
-if (global.db.data) global.db.write().catch(console.error)
+if (global.db.data) await global.db.write().catch(console.error)
 if (opts['autocleartmp']) try {
 clearTmp()
 } catch (e) { console.error(e) }
 }, 60 * 1000)
 }
 
-if (opts['server']) (import('./server.js')).default(global.conn, PORT)
+if (opts['server']) (await import('./server.js')).default(global.conn, PORT)
 
 /* Clear */
 async function clearTmp() {
@@ -220,7 +219,7 @@ return false
 }
 
 setInterval(async () => {
-clearTmp()
+await clearTmp()
 console.log(chalk.cyan(`┏━━━━━━⪻♻️ AUTO-CLEAR 🗑️⪼━━━━━━•\n┃→ ARCHIVOS DE LA CARPETA TMP ELIMINADAS\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━•`))
 }, 60000) //1 munto
 
@@ -278,10 +277,10 @@ console.log(chalk.bold.red(`Archivo ${file} no borrado` + err))
 
 setInterval(async () => {
 if (stopped === 'close' || !conn || !conn.user) return
-purgeSessionSB()
-purgeSession()
+await purgeSessionSB()
+await purgeSession()
 console.log(chalk.bold.cyanBright(`\n╭» 🔵 ${global.authFile} 🔵\n│→ SESIONES NO ESENCIALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))
-purgeOldFiles()
+await purgeOldFiles()
 console.log(chalk.bold.cyanBright(`\n╭» 🟠 ARCHIVOS 🟠\n│→ ARCHIVOS RESIDUALES ELIMINADAS\n╰― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― ― 🗑️♻️`))}, 1000 * 60 * 10)
 
 async function connectionUpdate(update) {
@@ -290,7 +289,7 @@ global.stopped = connection;
 if (isNewLogin) conn.isInit = true;
 const code = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode;
 if (code && code !== DisconnectReason.loggedOut && conn?.ws.socket == null) {
-global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 //console.log(await global.reloadHandler(true).catch(console.error));
 global.timestamp.connect = new Date;
 }
@@ -301,11 +300,11 @@ console.log(chalk.cyan('✅ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS ✅.'))
 }}
 if (connection == 'open') {
 console.log(chalk.bold.greenBright('\n▣─────────────────────────────···\n│\n│❧ 𝙲𝙾𝙽𝙴𝙲𝚃𝙰𝙳𝙾 𝙲𝙾𝚁𝚁𝙴𝙲𝚃𝙰𝙼𝙴𝙽𝚃𝙴 𝙰𝙻 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 ✅\n│\n▣─────────────────────────────···'))
-joinChannels(conn)
+await joinChannels(conn)
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
-fs.unlinkSync("./BotSession/" + "creds.json")
+await fs.unlinkSync("./BotSession/" + "creds.json")
 console.log(chalk.bold.redBright(`[ ⚠ ] Conexión replazada, Por favor espere un momento me voy a reiniciar...\nSi aparecen error vuelve a iniciar con : npm start`)) 
 process.send('reset')}
 if (connection === 'close') {
@@ -314,10 +313,10 @@ conn.logger.error(`[ ⚠ ] Sesión incorrecta, por favor elimina la carpeta ${gl
 //process.exit();
 } else if (reason === DisconnectReason.connectionClosed) {
 conn.logger.warn(`[ ⚠ ] Conexión cerrada, reconectando...`);
- global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 } else if (reason === DisconnectReason.connectionLost) {
 conn.logger.warn(`[ ⚠ ] Conexión perdida con el servidor, reconectando...`);
- global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 } else if (reason === DisconnectReason.connectionReplaced) {
 conn.logger.error(`[ ⚠ ] Conexión reemplazada, se ha abierto otra nueva sesión. Por favor, cierra la sesión actual primero.`);
 //process.exit();
@@ -326,22 +325,22 @@ conn.logger.error(`[ ⚠ ] Conexion cerrada, por favor elimina la carpeta ${glob
 //process.exit();
 } else if (reason === DisconnectReason.restartRequired) {
 conn.logger.info(`[ ⚠ ] Reinicio necesario, reinicie el servidor si presenta algún problema.`);
- global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 } else if (reason === DisconnectReason.timedOut) {
 conn.logger.warn(`[ ⚠ ] Tiempo de conexión agotado, reconectando...`);
- global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 } else {
 conn.logger.warn(`[ ⚠ ] Razón de desconexión desconocida. ${reason || ''}: ${connection || ''}`);
- global.reloadHandler(true).catch(console.error);
+await global.reloadHandler(true).catch(console.error);
 }}}
 
 process.on('uncaughtException', console.error);
 
 let isInit = true;
-let handler = import('./handler.js')
+let handler = await import('./handler.js')
 global.reloadHandler = async function (restatConn) {
 try {
-const Handler = import(`./handler.js?update=${Date.now()}`).catch(console.error)
+const Handler = await import(`./handler.js?update=${Date.now()}`).catch(console.error)
 if (Object.keys(Handler || {}).length) handler = Handler
 } catch (e) {
 console.error(e)
@@ -394,7 +393,7 @@ async function filesInit() {
 for (const filename of readdirSync(pluginFolder).filter(pluginFilter)) {
 try {
 const file = global.__filename(join(pluginFolder, filename))
-const module = import(file)
+const module = await import(file)
 global.plugins[filename] = module.default || module;
 } catch (e) {
 conn.logger.error(e)
@@ -419,7 +418,7 @@ allowAwaitOutsideFunction: true,
 if (err) conn.logger.error(`❌ error de sintaxis al cargar '${filename}'\n${format(err)}`)
 else {
 try { 
-const module = (import(`${global.__filename(dir)}?update=${Date.now()}`))
+const module = (await import(`${global.__filename(dir)}?update=${Date.now()}`))
 global.plugins[filename] = module.default || module
 } catch (e) {
 conn.logger.error(`❌ Error requiere plugins: '${filename}\n${format(e)}'`);
@@ -429,10 +428,10 @@ global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b
 
 Object.freeze(global.reload)
 watch(pluginFolder, global.reload)
- global.reloadHandler()
+await global.reloadHandler()
 
 async function _quickTest() {
-let test = Promise.all([
+let test = await Promise.all([
 spawn('ffmpeg'),
 spawn('ffprobe'),
 spawn('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-filter_complex', 'color', '-frames:v', '1', '-f', 'webp', '-']),
@@ -488,5 +487,5 @@ return false
 
 async function joinChannels(conn) {
 for (const channelId of Object.values(global.ch)) {
- conn.newsletterFollow(channelId).catch(() => {})
+await conn.newsletterFollow(channelId).catch(() => {})
 }}

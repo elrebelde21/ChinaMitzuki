@@ -28,13 +28,10 @@ let tags = {'main': 'ℹ️ INFOBOT',
 const defaultMenu = {
 before: `「 %wm 」
  
-*ღHolis mi nombre es Yenni 💋🔥
+*ღ Holis *%name* como esta bb 😘, mi nombre es Yenni 💋🔥
 y este es mi bot China Mitzuki espero les guste 
 puedes apoyar a mi bot uniendote al canal
-que esta mas abajo 
-Gracias por elegir mi bot ☺️❤️
-att: La China 💋
-Hola 👋🏻 *%name* como esta bby 💋🔥
+que esta mas abajo, Gracias por elegir mi bot ☺️❤️
 *ღ Creadora:* La China 💋❤️‍🔥
 *ღ Contacto:* ${ig}
 *ღ Fecha:* %fecha

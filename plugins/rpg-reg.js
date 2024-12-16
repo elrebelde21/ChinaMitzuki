@@ -9,7 +9,7 @@ let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status
   let bio = await conn.fetchStatus(who).catch(_ => 'undefined')
 let biot = bio.status?.toString() || 'Sin Info'
 const date = moment.tz('America/Bogota').format('DD/MM/YYYY')
-const time = moment.tz('America/Argentina/Buenos_Aires').format('LT')
+const time = moment.tz('America/New_York').format('LT')
 let api = await axios.get(`${apis}/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`)
 let userNationalityData = api.data.result
 let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido'
@@ -54,7 +54,7 @@ await conn.sendMessage(m.chat, { text: `[ ✅ REGISTRO COMPLETADO ]
 
 ◉ *Nombre:* ${name}
 ◉ *Edad:* ${age} años
-◉ *Hora:* ${time} 🇦🇷
+◉ *Hora:* ${time} 🇺🇸
 ◉ *Fecha:* ${date}
 ◉ *País:* ${userNationality}
 ◉ *Número:* wa.me/${who.split`@`[0]}

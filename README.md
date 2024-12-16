@@ -14,11 +14,11 @@
 </p>  
 
 <p align="center">
-<a href="#"><img title="The-LoliBot-MD" src="https://img.shields.io/badge/LEA TODO EL README-red?colorA=%F77F48FF&colorB=%F77F48FF&style=for-the-badge"></a> 
+<a href="#"><img title="LoliBot-MD" src="https://img.shields.io/badge/LEA TODO EL README-red?colorA=%F77F48FF&colorB=%F77F48FF&style=for-the-badge"></a> 
 <a href="#"><img title="LoliBot-MD" src="https://img.shields.io/badge/COMPATIBLE CON LA VERSIÓN MULTI DISPOSITIVOS DE WHATSAPP-red?colorA=%F77F48FF&colorB=%F77F48FF&style=for-the-badge">
 
 <p align="center">   
-<a href="https://github.com/elrebelde21/ChinaMitzuki/network/members"><img title="Forks" src="https://img.shields.io/github/forks/elrebelde21/LoliBot-MD?label=Forks&color=blue&style=flat-square"></a>
+<a href="https://github.com/elrebelde21/ChinaMitzuki/network/members"><img title="Forks" src="https://img.shields.io/github/forks/elrebelde21/ChinaMitzuki?label=Forks&color=blue&style=flat-square"></a>
 <a href="https://github.com/elrebelde21/ChinaMitzuki/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/elrebelde21/ChinaMitzuki?label=Watchers&color=green&style=flat-square"></a>
 <a href="https://github.com/elrebelde21/ChinaMitzuki/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/elrebelde21/ChinaMitzuki?label=Stars&color=yellow&style=flat-square"></a>
 </p> 

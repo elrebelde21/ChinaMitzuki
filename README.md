@@ -102,7 +102,7 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 ------------------- 
 
 ## `𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃`
-[![ChinaMitzuki](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mitzuki_chinita)
+[![ChinaMitzuki](https://img.shields.io/badge/ChinaMitzuki-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mitzuki_chinita)
 
 ## `𝙳𝙴𝚂𝙰𝚁𝚁𝙾𝙻𝙻𝙰𝙳𝙾𝚁 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃`
 [![elrebelde21](https://github.com/elrebelde21.png?size=100)](https://github.com/GataNina-Li) 

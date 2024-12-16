@@ -106,3 +106,8 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 ## `𝙳𝙴𝚂𝙰𝚁𝚁𝙾𝙻𝙻𝙰𝙳𝙾𝚁 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃`
 [![elrebelde21](https://github.com/elrebelde21.png?size=100)](https://github.com/GataNina-Li) 
+
+
+## `𝙰𝙶𝚁𝙰𝙳𝙴𝙲𝙸𝙼𝙸𝙴𝙽𝚃𝙾𝚂 & 𝙲𝚁𝙴𝙳𝙸𝚃𝙾𝚂` 
+<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="TheShadowBrokers1"/></a>
+<a href="https://github.com/WhiskeySockets/Baileys"><img src="https://github.com/WhiskeySockets.png" width="150" height="150" alt="adiwajshing"/></a>

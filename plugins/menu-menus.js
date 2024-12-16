@@ -36,7 +36,7 @@ que esta mas abajo, Gracias por elegir mi bot ☺️❤️
 *ღ Creadora:* La China 💋❤️‍🔥
 *ღ Contacto:* ${ig}
 *ღ Fecha:* %fecha
-*ღ Hora:* %hora (🇦🇷) 
+*ღ Hora:* %hora (🇺🇸) 
 *ღ Usuario:* %totalreg
 *ღ Tiempo activos:* %muptime
 %botOfc
@@ -65,7 +65,7 @@ let name = await conn.getName(m.sender)
 let d = new Date(new Date + 3600000)
 let locale = 'es'
 let fecha = moment.tz('America/Bogota').format('DD/MM/YYYY')
-let hora = moment.tz('America/Argentina/Buenos_Aires').format('LT')
+let hora = moment.tz('America/New_York').format('LT')
 
 let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
 let week = d.toLocaleDateString(locale, { weekday: 'long' })

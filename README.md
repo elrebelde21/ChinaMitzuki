@@ -49,8 +49,6 @@
 
 ----
 
-----
-
 ## 𝙰𝙲𝚃𝙸𝚅𝙰 𝙴𝙻 𝚃𝙴𝚁𝙼𝚄𝚇
 👇 Pasos para instalar el bot via termux 👇
 
@@ -86,5 +84,19 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 > rm -rf BotSession
 > npm start
 ```
+
+------------------ 
+
+### `🟢 𝙰𝙲𝚃𝙸𝚅𝙰𝚁 𝙴𝙽 𝚁𝙴𝙿𝙻𝙸𝚃`
+
+[![blog](https://img.shields.io/badge/Replit-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
+](https://youtu.be/SMjCcfuyWQE)
+
+[![Run on Repl.it](https://repl.it/badge/github/elrebelde21/NovaBot-MD)](https://repl.it/github/elrebelde21/NovaBot-MD) 
+------------------
+
+### 🟢 ACTIVAR EN CODES SPACES 
+
+[`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=elrebelde21/NovaBot-MD&ref=main&geo=UsEast)
 
 ------------------ 

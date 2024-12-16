@@ -109,5 +109,5 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 
 ## `𝙰𝙶𝚁𝙰𝙳𝙴𝙲𝙸𝙼𝙸𝙴𝙽𝚃𝙾𝚂 & 𝙲𝚁𝙴𝙳𝙸𝚃𝙾𝚂` 
-<a href="https://github.com/BrunoSobrino"><img src="https://github.com/BrunoSobrino.png" width="150" height="150" alt="TheShadowBrokers1"/></a>
-<a href="https://github.com/WhiskeySockets/Baileys"><img src="https://github.com/WhiskeySockets.png" width="150" height="150" alt="adiwajshing"/></a>
+[![TheShadowBrokers1](https://github.com/BrunoSobrino.png?size=60)](https://github.com/BrunoSobrino) 
+[![adiwajshing](https://github.com/WhiskeySockets.png?size=60)](https://github.com/WhiskeySockets/Baileys) 

@@ -33,7 +33,7 @@
 
 
 -----
-### ☁️ Activar 24/7 activos en SkyUltraPlus Host
+### ☁️ Despliegue en SkyUltraPlus
 [![YouTube](https://img.shields.io/badge/SkyUltraPlus-Host-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/fZbcCLpSH6Y?si=1sDen7Bzmb7jVpAI)
 
 <a href="https://dash.corinplus.com"><img src="https://qu.ax/zFzXF.png" height="125px"></a>
@@ -87,17 +87,17 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 ------------------ 
 
-### `🟢 𝙰𝙲𝚃𝙸𝚅𝙰𝚁 𝙴𝙽 𝚁𝙴𝙿𝙻𝙸𝚃`
+### `🟢 𝙳𝙴𝚂𝙿𝙻𝙸𝙴𝙶𝚄𝙴 𝙴𝙽 𝚁𝙴𝙿𝙻𝙸𝚃`
 
 [![blog](https://img.shields.io/badge/Replit-Tutorial-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
 ](https://youtu.be/SMjCcfuyWQE)
 
-[![Run on Repl.it](https://repl.it/badge/github/elrebelde21/NovaBot-MD)](https://repl.it/github/elrebelde21/NovaBot-MD) 
+[![Run on Repl.it](https://repl.it/badge/github/elrebelde21/ChinaMitzuki)](https://repl.it/github/elrebelde21/ChinaMitzuki) 
 ------------------
 
-### 🟢 ACTIVAR EN CODES SPACES 
+### 🟢 𝙳𝙴𝚂𝙿𝙻𝙸𝙴𝙶𝚄𝙴 𝙴𝙽 𝙲𝙾𝙳𝙴𝚂 𝚂𝙿𝙰𝙲𝙴𝚂 
 
-[`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=elrebelde21/NovaBot-MD&ref=main&geo=UsEast)
+[`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=elrebelde21/ChinaMitzuki&ref=main&geo=UsEast)
 
 ------------------- 
 

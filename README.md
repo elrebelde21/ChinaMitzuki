@@ -22,3 +22,11 @@
 <a href="https://github.com/elrebelde21/ChinaMitzuki/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/elrebelde21/ChinaMitzuki?label=Watchers&color=green&style=flat-square"></a>
 <a href="https://github.com/elrebelde21/ChinaMitzuki/stargazers"><img title="Stars" src="https://img.shields.io/github/stars/elrebelde21/ChinaMitzuki?label=Stars&color=yellow&style=flat-square"></a>
 </p> 
+
+<div align="center">
+ 
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://facebook.com/groups/872989990425789/)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@elrebelde.21)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mitzuki_chinita)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/OficialGD)
+</div>

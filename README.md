@@ -48,3 +48,43 @@
 - **Discord:** [`aqui`](https://discord.gg/Ph4eWsZ8)
 
 ----
+
+----
+
+## 𝙰𝙲𝚃𝙸𝚅𝙰 𝙴𝙻 𝚃𝙴𝚁𝙼𝚄𝚇
+👇 Pasos para instalar el bot via termux 👇
+
+[`💫 Instalar termux clic aqui`](https://www.mediafire.com/file/3hsvi3xkpq3a64o/termux_118.apk/file)
+
+```bash
+termux-setup-storage
+```
+```bash
+apt update && apt upgrade && pkg update && pkg upgrade && pkg install bash && pkg install libwebp && pkg install git -y && pkg install nodejs -y && pkg install ffmpeg -y && pkg install wget && pkg install imagemagick -y && pkg install yarn
+```
+```bash
+git clone https://github.com/elrebelde21/ChinaMitzuki && cd ChinaMitzuki
+```
+```bash
+bash ./install2.sh
+```
+```bash
+npm start
+```
+
+### `🟢 𝙰𝙲𝚃𝙸𝚅𝙰𝚁 𝙴𝙽 𝙲𝙰𝚂𝙾 𝙳𝙴 𝙳𝙴𝚃𝙴𝙽𝙴𝚁𝚂𝙴 𝙴𝙽 𝚃𝙴𝚁𝙼𝚄𝚇`
+Si despues que ya instalastes tu bot y termux te salta en blanco, se fue tu internet o reiniciaste tu celular, solo realizaras estos pasos
+```bash
+> cd ChinaMitzuki
+> npm start
+```
+### `🟢 𝙾𝙱𝚃𝙴𝙽𝙴𝚁 𝙾𝚃𝚁𝙾 𝙲𝙾𝙳𝙸𝙶𝙾 𝚀𝚁 𝙴𝙽 𝚃𝙴𝚁𝙼𝚄𝚇`
+Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
+```bash
+> cd 
+> cd ChinaMitzuki
+> rm -rf BotSession
+> npm start
+```
+
+------------------ 

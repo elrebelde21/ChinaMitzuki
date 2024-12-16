@@ -28,8 +28,11 @@ let tags = {'main': 'ℹ️ INFOBOT',
 const defaultMenu = {
 before: `「 %wm 」
  
-Hola 👋🏻 *%name* como esta bby 💋🔥
 
+
+
+
+Hola 👋🏻 *%name* como esta bby 💋🔥
 *ღ Creadora:* La China 💋❤️‍🔥
 *ღ Contacto:* ${ig}
 *ღ Fecha:* %fecha

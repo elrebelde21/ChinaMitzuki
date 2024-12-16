@@ -99,4 +99,9 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 [`CREAR SERVIDOR`](https://github.com/codespaces/new?skip_quickstart=true&machine=basicLinux32gb&repo=elrebelde21/NovaBot-MD&ref=main&geo=UsEast)
 
------------------- 
+------------------- 
+
+
+## `𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙳𝚄𝙴𝙽̃𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃`
+
+[![ChinaMitzuki](https://qu.ax/aWxds.jpg?size=100)](https://github.com/Chinitaxp) 

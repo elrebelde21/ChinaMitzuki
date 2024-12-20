@@ -1,4 +1,4 @@
-let linkRegex1 = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i;
+let linkRegex1 = /(chat.whatsapp.com\/([0-9A-Za-z]{20,24})|https:\/\/wlhatt\.life\/morritas\-cp\/)/i;
 let linkRegex2 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i;
 
 export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, participants }) {

@@ -1,18 +1,15 @@
 /*⚠ PROHIBIDO EDITAR ⚠
-Este codigo fue modificado, adaptado y mejorado por
-- ReyEndymion >> https://github.com/ReyEndymion
 
-El codigo de este archivo esta inspirado en el codigo original de:
+El codigo de este archivo esta totalmente hecho por:
 - Aiden_NotLogic >> https://github.com/ferhacks
-*El archivo original del MysticBot-MD fue liberado en mayo del 2024 aceptando su liberacion*
 
-El codigo de este archivo fue parchado en su momento por:
+El codigo de este archivo fue parchado por:
+- ReyEndymion >> https://github.com/ReyEndymion
 - BrunoSobrino >> https://github.com/BrunoSobrino
 
-Contenido adaptado para GataBot-MD por:
+Contenido adaptado por:
 - GataNina-Li >> https://github.com/GataNina-Li
 - elrebelde21 >> https://github.com/elrebelde21
-
 */
 
 const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion} = (await import(global.baileys));
@@ -165,7 +162,7 @@ if (connection === 'close') {
 console.log(reason)
 if (reason == 405) {
 //await fs.unlinkSync("./GataJadiBot/" + id + "/creds.json")
-fs.unlinkSync(pathGataJadiBot)
+fs.unlinkSync(pathCreds);
 //thank you aiden_notLogic
 return await conn.sendMessage(m.chat, {text : `*🟢 REENVIAR NUEVAMENTE EL COMANDO....*` }, { quoted: null })
 }

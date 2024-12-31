@@ -17,11 +17,11 @@ if (m.isGroup) return !1
 if (!m.message) return !0 
 if (m.chat === "120363297379773397@newsletter") return; 
 if (m.chat === "120363355261011910@newsletter") return;
-if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') ||  m.text.includes('menu') ||  m.text.includes('estado') || m.text.includes('bots') ||  m.text.includes('serbot') || m.text.includes('jadibot')) return !0
+if (m.text.includes('PIEDRA') || m.text.includes('PAPEL') || m.text.includes('TIJERA') ||  m.text.includes('menu') || m.text.includes('estado') || m.text.includes('bots') || m.text.includes('serbot') || m.text.includes('jadibot') || m.text.includes('reg') || m.text.includes('verificar') || m.text.includes('Serbot') || m.text.includes('Jadibot')) return !0
 let chat = global.db.data.chats[m.chat]
 let bot = global.db.data.settings[this.user.jid] || {}
 if (bot.antiPrivate && !isOwner && !isROwner) {
-await m.reply(`Hola esta prohibido usar los comando al privado del bot, por lo cual seras bloqueado...\nwww.instagram.com/mitzuki_chinita\n\n> _*Para usar mi funciones unirte al  grupo oficial 👇*_\n${nn}\nhttps://chat.whatsapp.com/GKJ7UpMsLXaDYcl9PovsJL`, false, { mentions: [m.sender] })
+await m.reply(`Hola esta prohibido usar los comando al privado del bot, por lo cual seras bloqueado...\nwww.instagram.com/mitzuki_chinita\n\n> _*Para usar mi funciones unirte al  grupo oficial 👇*_\n${[(nnn, nnnttt, nnnt)].getRandom()}`, false, { mentions: [m.sender] })
 await this.updateBlockStatus(m.chat, 'block')}
 return !1
 }

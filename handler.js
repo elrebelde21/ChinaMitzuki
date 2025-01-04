@@ -885,6 +885,7 @@ if (!isNumber(user.limit)) user.limit = 8
             if (typeof chat !== 'object')
                 global.db.data.chats[m.chat] = {}
 if (chat) {
+if (!('sAutorespond' in chat)) chat.sAutorespond = '' 
 if (!('isBanned' in chat)) chat.isBanned = false         
 if (!('welcome' in chat)) chat.welcome = true           
 if (!('detect' in chat)) chat.detect = true               
@@ -939,6 +940,7 @@ sBye: '',
 sPromote: '',
 sDemote: '', 
 sCondition: JSON.stringify([{ grupo: { usuario: [], condicion: [], admin: '' }, prefijos: []}]), 
+sAutorespond: '', 
 delete: false,
 modohorny: true,
 stickers: false,
@@ -1472,14 +1474,15 @@ global.dfail = (type, m, conn, usedPrefix) => {
 
 const file = global.__filename(import.meta.url, true);
 watchFile(file, async () => {
-unwatchFile(file)
-console.log(chalk.redBright('Update \'handler.js\''));
-//if (global.reloadHandler) console.log(await global.reloadHandler());
+  unwatchFile(file);
+  console.log(chalk.redBright('Update \'handler.js\''));
+  if (global.reloadHandler) console.log(await global.reloadHandler());
   
-/*if (global.conns && global.conns.length > 0 ) {
-const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
-for (const userr of users) {
-userr.subreloadHandler(false)
-}}
-*/  
+  if (global.conns && global.conns.length > 0 ) {
+    const users = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])];
+    for (const userr of users) {
+      userr.subreloadHandler(false)
+    }
+  }
+  
 });

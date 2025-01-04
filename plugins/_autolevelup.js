@@ -6,6 +6,7 @@ export async function before(m, { conn }) {
  let ppch = await conn.profilePictureUrl(who, 'image').catch(_ => imageUrl.getRandom()) 
 let user = global.db.data.users[m.sender]
 let chat = global.db.data.chats[m.chat]
+if (m.fromMe) return
 if (!chat.autolevelup) return !0
 let before = user.level * 1
 while (canLevelUp(user.level, user.exp, global.multiplier))

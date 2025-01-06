@@ -42,7 +42,7 @@ global.work = ['Eres un maestro alquimista, destilando misteriosas pociones en b
   'Desarrollas tecnología futurista, impulsando la innovación y cambiando el rumbo del mundo. obtiene:',
   'Eres un maestro en el arte de la persuasión, convenciendo a otros con tu elocuencia y astucia.',
   'Piloteas un mecha gigante en batallas épicas, defendiendo la tierra con tu destreza en la máquina de guerra. obtiene:',
-  'Diriges una granja de dragones, cuidando de estas majestuosas criaturas y criando dragones únicos. obtiene:',
+  'eres una puta de las bien putas y te cojes a tu tío te vienes en su cara y te haces fan de kunno obtienes mil vergas galácticas :',
   'Eres un espía internacional, infiltrándote en organizaciones secretas y desenmascarando complots oscuros. obtiene:',
   'Exploras el espacio y haces descubrimientos asombrosos que te otorgan una visión única del universo. obtiene:',
   'Eres un mago de renombre, realizando trucos impresionantes y conjurando hechizos mágicos. obtiene:',

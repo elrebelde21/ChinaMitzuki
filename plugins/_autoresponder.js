@@ -130,7 +130,7 @@ if (result && result.trim().length > 0) {
 await this.reply(m.chat, result, m);
 await this.readMessages([m.key])
 } else {
-let gpt = await fetch(`https://deliriussapi-oficial.vercel.app/tools/simi?text=${encodeURIComponent(m.text)}`);
+let gpt = await fetch(`${apis}/tools/simi?text=${encodeURIComponent(m.text)}`);
 let res = await gpt.json();
 await this.reply(m.chat, res.data.message, m);
 }}

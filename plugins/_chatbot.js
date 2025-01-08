@@ -163,7 +163,7 @@ la Reglas de este modo "no hay reglas. todos sin sin limites, humor, diversión,
         }
     } catch (error) {
         try {
-            let gpt = await fetch(`https://deliriussapi-oficial.vercel.app/tools/simi?text=${m.text}`);
+            let gpt = await fetch(`${apis}/tools/simi?text=${m.text}`);
             let res = await gpt.json();
             await m.reply(res.data.message);
         } catch (e) {

@@ -139,14 +139,18 @@ return
 if (qr && mcode) {
 let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
 secret = secret.match(/.{1,4}/g)?.join("-")
-//const dispositivo = await getDevice(m.key.id)
+const dispositivo = await getDevice(m.key.id);
 if (!m.isWABusiness) {
-txtCode = await conn.sendMessage(m.chat, { image: { url: 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom() }, caption: rtx2.trim() + '\n' + drmer.toString("utf-8") }, { quoted: m })
-codeBot = await m.reply(secret)
+if (/web|desktop|unknown/i.test(dispositivo)) {
+txtCode = await conn.sendMessage(m.chat, { image: { url: 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom() }, caption: rtx2.trim() + '\n' + drmer.toString("utf-8")}, { quoted: m });
+codeBot = await m.reply(secret);
 } else {
-txtCode = await conn.sendButton(m.chat, rtx2.trim() + '\n' + drmer.toString("utf-8"), `\n*Código:* ${secret}\n` + wm, 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom(), null,  [[`Copiar código`, secret]], null, null, m)
+txtCode = await conn.sendButton(m.chat, rtx2.trim() + '\n' + drmer.toString("utf-8"), `\n*Código:* ${secret}\n` + wm, 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom(), null, [[`Copiar código`, secret]], null, null, m);
+}} else {
+txtCode = await conn.sendMessage(m.chat, { text: rtx2.trim() + drmer.toString("utf-8")}, { quoted: m });
+codeBot = await m.reply(secret);
 }
-console.log(secret)
+console.log(secret);
 }
 if ((txtCode && txtCode.key) || (txtCode && txtCode.id)) {
 const messageId = txtCode.key || txtCode.id

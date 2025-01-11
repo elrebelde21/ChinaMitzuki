@@ -49,10 +49,10 @@ if (global.conns instanceof Array) console.log()
 else global.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
 //if (!global.db.data.settings[conn.user.jid].jadibotmd) return m.reply(`${lenguajeGB['smsSoloOwnerJB']()}`)
-if (m.fromMe) return
+if (m.fromMe || conn.user.jid === m.sender) return
 //if (conn.user.jid !== global.conn.user.jid) return conn.reply(m.chat, `${lenguajeGB['smsJBPrincipal']()} wa.me/${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}`, m) 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let id = `${who.split`@`[0]}` //conn.getName(who)
+let id = `${who.split`@`[0]}`  //conn.getName(who)
 let pathGataJadiBot = path.join("./jadibts/", id)
 if (!fs.existsSync(pathGataJadiBot)){
 fs.mkdirSync(pathGataJadiBot, { recursive: true })
@@ -70,17 +70,11 @@ export default handler
 
 export async function gataJadiBot(options) {
 let { pathGataJadiBot, m, conn, args, usedPrefix, command } = options
-
 if (command === 'code') {
 command = 'jadibot'; 
 args.unshift('code')}
 
-    const mcode = args[0] && /(--code|code)/.test(args[0].trim()) 
-        ? true 
-        : args[1] && /(--code|code)/.test(args[1].trim()) 
-        ? true 
-        : false;
-        
+const mcode = args[0] && /(--code|code)/.test(args[0].trim()) ? true : args[1] && /(--code|code)/.test(args[1].trim()) ? true : false;
 let txtCode, codeBot, txtQR
 if (mcode) {
 args[0] = args[0].replace(/^--code$|^code$/, "").trim()
@@ -214,6 +208,7 @@ if (reason === 403) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ Sesión cerrada o cuenta en soporte para la sesión (+${path.basename(pathGataJadiBot)}).\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
 fs.rmdirSync(pathGataJadiBot, { recursive: true })
 }}
+
 if (global.db.data == null) loadDatabase()
 if (connection == `open`) {
 if (!global.db.data?.users) loadDatabase()
@@ -233,7 +228,7 @@ let chtxt = `*Se detectó un nuevo Sub-Bot conectado 💻✨*
 *🔑 Método de conexión :* ${mcode ? 'Código de 8 dígitos' : 'Código QR'}
 *💻 Navegador :* ${mcode ? 'Ubuntu' : 'Chrome'}
 `.trim()
-let ppch = await sock.profilePictureUrl(userJid, 'image').catch(_ => imageUrl)
+let ppch = await sock.profilePictureUrl(userJid, 'image').catch(_ => imageUrl.getRandom())
 await sleep(3000)
 await global.conn.sendMessage(ch.ch1, { text: chtxt, contextInfo: {
 externalAdReply: {
@@ -245,11 +240,9 @@ mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
 }}}, { quoted: null })
-await sleep(3000)
+await sleep(3000) 
 await joinChannels(sock)
-/*m?.chat ? await conn.sendMessage(m.chat, {text : `✅ Ya esta conectado!! Por favor espere se esta cargador los mensajes.....*
-
-*🟢 IMPORTANTE:*
+/*m?.chat ? await conn.sendMessage(m.chat, {text : `☄️ *IMPORTANTE*
 > ⚠️ *Usa en este momento el comando ${usedPrefix}codetoken para que tengas un respaldo de la sesión*\n
 > Para pausar tú sesión (actualmente este comando solo hace una pausa temporal):
 \`${usedPrefix}stop\`\n
@@ -265,7 +258,8 @@ await joinChannels(sock)
 > Puedes hacer una pausa definitiva primero obteniendo el token de la sesión, luego borrar los datos y cuando quieras volver a ser bot usa el token para crear la sesión (Solo funciona mientras no cierres la sesión en WhatsApp).\n
 > Si tienes problemas de conexión, elimina los datos y usa el token o solicita un nuevo código QR o código de 8 dígitos.\n
 > Si te llega un mensaje de *"sesión reemplazada"* realiza la indicación anterior.\n
-> Si se desconecta frecuentemente usa \`${usedPrefix + command}\` si el problema persiste vuelve a ser sub bot.`}, { quoted: m }) : ''*/
+> Si se desconecta frecuentemente usa \`${usedPrefix + command}\` si el problema persiste vuelve a ser sub bot.`}, { quoted: m }) : ''
+*/
 }}
 setInterval(async () => {
 if (!sock.user) {

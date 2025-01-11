@@ -10,10 +10,10 @@ import moment from 'moment-timezone'
 //---------[ Añada los numeros a ser Propietario/a ]---------
 
 global.owner = [
-['85265035791', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', true],
+['85254109507', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', true],
 ['5214774444444', '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕺𝖜𝖓𝖊𝖗 💋', true],
 ['593968585383'],
-['85254109507'],
+['85265035791'],
 ['573147616444'],
 ['573008499604'],
 ['15812977806'], 
@@ -88,7 +88,7 @@ global.author = 'elrebelde21'
 //------------------------[ Contacto ]-----------------------------
 
 global.official = [ // Agregate si eres Owner
-["85265035791", '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', 1], 
+["85254109507", '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕯𝖚𝖊𝖓̃𝖆 💋', 1], 
 ["5214774444444", '𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 - 𝕺𝖜𝖓𝖊𝖗 💋', 1]]
 
 global.mail = '' // Add email
@@ -112,7 +112,7 @@ global.nna = 'https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A' //Update
 global.nna2 = 'https://whatsapp.com/channel/0029Vau57ykEwEk5CgosvU3v' //LoliBot update
 global.nnaa = 'https://whatsapp.com/channel/0029Vae6j714Y9loutP3Au29' //LoliBot - Test
 global.nn = 'https://chat.whatsapp.com/HNDVUxHphPzG3cJHIwCaX5' //Grupo 1
-global.nnn = 'https://chat.whatsapp.com/H4hxytyGvucIF1k0UAR7es' //Grupo 2
+global.nnn = 'https://chat.whatsapp.com/KDBt6S54riRCIpSZspkxhg' //Grupo 2
 global.nnnt = 'https://chat.whatsapp.com/IO5k0UOF7hOJHE1eH3Fcxh' //Grupo del Colaboracion
 global.nnnt2 = 'https://chat.whatsapp.com/K7RzcVdxGqhGP5dCpVENSI' // Grupo COL 2
 global.nnntt = 'https://chat.whatsapp.com/IB9Vs7mZ03BBkH3reCU8Dw' //Grupo COL 3

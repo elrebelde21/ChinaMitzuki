@@ -53,7 +53,7 @@ mentions:[m.sender, m.messageStubParameters[0]],
 "title": [wm, ' ' + wm + '😊', '🌟'].getRandom(),
 "containsAutoReply": true,
 "mediaType": 1, 
-sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: fkontak }) 
+sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: null }) 
 } else if (chat.welcome && m.messageStubType == 32) {
 let textBye = `Se fue @${m.messageStubParameters[0].split`@`[0]} un gays`
 await this.sendMessage(m.chat, { text: textBye, 
@@ -68,7 +68,7 @@ mentions:[m.sender, m.messageStubParameters[0]],
 "title": [wm, ' ' + wm + '😊', '🌟'].getRandom(),
 "containsAutoReply": true,
 "mediaType": 1, 
-sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: fkontak }) 
+sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: null }) 
 } else if (chat.detect && m.messageStubType == 29) {
 await this.sendMessage(m.chat, { text: `@${m.messageStubParameters[0].split`@`[0]} 𝘼𝙃𝙊𝙍𝘼 𝙀𝙎 𝘼𝘿𝙈𝙄𝙉 𝙀𝙉 𝙀𝙎𝙏𝙀 𝙂𝙍𝙐𝙋𝙊\n\n😼🫵𝘼𝘾𝘾𝙄𝙊𝙉 𝙍𝙀𝘼𝙇𝙄𝙕𝘼𝘿𝘼 𝙋𝙊𝙍: ${usuario}`, mentions: [m.sender, m.messageStubParameters[0], ...groupAdmins.map(v => v.id)] }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 } else if (chat.detect && m.messageStubType == 30) {

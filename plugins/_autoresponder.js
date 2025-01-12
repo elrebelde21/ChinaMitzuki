@@ -12,7 +12,8 @@ m.isBot = m.id.startsWith('BAE5') && m.id.length === 16 || m.id.startsWith('3EB0
 if (m.isBot) return
 if (m.id.startsWith('NJX-')) return;
 if (m.fromMe || conn.user.jid === m.sender) return
-    
+
+let user = global.db.data.users[m.sender]   
 let chat = global.db.data.chats[m.chat];
 let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']');
 

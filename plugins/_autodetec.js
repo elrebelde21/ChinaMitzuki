@@ -36,7 +36,7 @@ await this.sendMessage(m.chat, { text: `🔒 𝘼𝙃𝙊𝙍𝘼 *${m.messageSt
 } else if (chat.detect && m.messageStubType == 26) {
 await this.sendMessage(m.chat, { text: `𝙀𝙇 𝙂𝙍𝙐𝙋𝙊 *${m.messageStubParameters[0] == 'on' ? '𝙀𝙎𝙏𝘼 𝘾𝙀𝙍𝙍𝘼𝘿𝙊 🔒' : '𝙀𝙎𝙏𝘼 𝘼𝘽𝙄𝙀𝙍𝙏𝙊 🔓'}*\n ${m.messageStubParameters[0] == 'on' ? '𝙎𝙊𝙇𝙊 𝙇𝙊𝙎 𝘼𝘿𝙈𝙄𝙉𝙎 𝙋𝙐𝙀𝘿𝙀𝙉 𝙀𝙎𝘾𝙍𝙄𝘽𝙄𝙍' : '𝙔𝘼 𝙋𝙐𝙀𝘿𝙀𝙉 𝙀𝙎𝘾𝙍𝙄𝘽𝙄𝙍 𝙏𝙊𝘿𝙊𝙎'} 𝙀𝙉 𝙀𝙎𝙏𝙀 𝙂𝙍𝙐𝙋𝙊`, mentions: [m.sender] }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 } else if (chat.welcome && m.messageStubType == 27) {
-if (global.this.user.jid.split`@`[0]) return
+//if (global.this.user.jid.split`@`[0]) return
 let usuarios = = [m.sender, m.messageStubParameters[0]];
 let subject = groupMetadata.subject
 let desc = groupMetadata.desc || ".";
@@ -45,7 +45,7 @@ let text = `•──〘 *\`WELCOME\`* 〙──•\n\n✨ *Bienvenid@s @${usuar
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: true, 
-mentions:[usuarios],
+mentions:[m.messageStubParameters[0]],
 "externalAdReply": {
 "showAdAttribution": true,
 "renderLargerThumbnail": true,

@@ -46,14 +46,14 @@ contextInfo:{
 forwardingScore: 9999999,
 isForwarded: true, 
 mentions:[m.sender, m.messageStubParameters[0]],
-"externalAdReply": {
-"showAdAttribution": true,
-"renderLargerThumbnail": true,
-"thumbnail": pp, 
-"title": [wm, ' ' + wm + '😊', '🌟'].getRandom(),
-"containsAutoReply": true,
-"mediaType": 1, 
-sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: null }) 
+externalAdReply: {
+showAdAttribution: true,
+renderLargerThumbnail: true,
+thumbnailUrl: pp, 
+title: [wm, ' ' + wm + '😊', '🌟'].getRandom(),
+containsAutoReply: true,
+mediaType: 1, 
+sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: fkontak }) 
 } else if (chat.welcome && m.messageStubType == 32) {
 let textBye = `Se fue @${m.messageStubParameters[0].split`@`[0]} un gays`
 await this.sendMessage(m.chat, { text: textBye, 
@@ -64,11 +64,11 @@ mentions:[m.sender, m.messageStubParameters[0]],
 "externalAdReply": {
 "showAdAttribution": true,
 "renderLargerThumbnail": true,
-"thumbnail": pp, 
+"thumbnailUrl": pp, 
 "title": [wm, ' ' + wm + '😊', '🌟'].getRandom(),
 "containsAutoReply": true,
 "mediaType": 1, 
-sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: null }) 
+sourceUrl: [md, nna, yt, nnn, nn, tiktok].getRandom()}}}, { quoted: fkontak }) 
 } else if (chat.detect && m.messageStubType == 29) {
 await this.sendMessage(m.chat, { text: `@${m.messageStubParameters[0].split`@`[0]} 𝘼𝙃𝙊𝙍𝘼 𝙀𝙎 𝘼𝘿𝙈𝙄𝙉 𝙀𝙉 𝙀𝙎𝙏𝙀 𝙂𝙍𝙐𝙋𝙊\n\n😼🫵𝘼𝘾𝘾𝙄𝙊𝙉 𝙍𝙀𝘼𝙇𝙄𝙕𝘼𝘿𝘼 𝙋𝙊𝙍: ${usuario}`, mentions: [m.sender, m.messageStubParameters[0], ...groupAdmins.map(v => v.id)] }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 } else if (chat.detect && m.messageStubType == 30) {

@@ -35,10 +35,17 @@ await this.sendMessage(m.chat, { text: `${usuario} 𝙉𝙐𝙀𝙑𝘼 𝘿𝙀
 await this.sendMessage(m.chat, { text: `🔒 𝘼𝙃𝙊𝙍𝘼 *${m.messageStubParameters[0] == 'on' ? '𝙎𝙊𝙇𝙊 𝘼𝘿𝙈𝙄𝙉𝙎' : '𝙏𝙊𝘿𝙊𝙎'}* 𝙋𝙐𝙀𝘿𝙀 𝙀𝘿𝙄𝙏𝘼𝙍 𝙇𝘼 𝙄𝙉𝙁𝙊𝙍𝙈𝘼𝘾𝙄𝙊𝙉 𝘿𝙀𝙇 𝙂𝙍𝙐𝙋𝙊`, mentions: [m.sender] }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
 } else if (chat.detect && m.messageStubType == 26) {
 await this.sendMessage(m.chat, { text: `𝙀𝙇 𝙂𝙍𝙐𝙋𝙊 *${m.messageStubParameters[0] == 'on' ? '𝙀𝙎𝙏𝘼 𝘾𝙀𝙍𝙍𝘼𝘿𝙊 🔒' : '𝙀𝙎𝙏𝘼 𝘼𝘽𝙄𝙀𝙍𝙏𝙊 🔓'}*\n ${m.messageStubParameters[0] == 'on' ? '𝙎𝙊𝙇𝙊 𝙇𝙊𝙎 𝘼𝘿𝙈𝙄𝙉𝙎 𝙋𝙐𝙀𝘿𝙀𝙉 𝙀𝙎𝘾𝙍𝙄𝘽𝙄𝙍' : '𝙔𝘼 𝙋𝙐𝙀𝘿𝙀𝙉 𝙀𝙎𝘾𝙍𝙄𝘽𝙄𝙍 𝙏𝙊𝘿𝙊𝙎'} 𝙀𝙉 𝙀𝙎𝙏𝙀 𝙂𝙍𝙐𝙋𝙊`, mentions: [m.sender] }, { quoted: fkontak, ephemeralExpiration: 24*60*100, disappearingMessagesInChat: 24*60*100})
-} else if (chat.welcome && m.messageStubType == 27 && this.user.jid != global.conn.user.jid) {
+} else if (chat.welcome && m.messageStubType == 27 && this.user.jid != global.conn.user.jid) { 
 let subject = groupMetadata.subject
-let descs = groupMetadata.desc || ".";
-let textWel = `•──〘 *\`WELCOME\`* 〙──•\n\n✨ *Bienvenid@s @${m.messageStubParameters[0].split`@`[0]} a ${subject} ✨\n\n*En este grupo podras encontrar:*\n➤ *Amistades* 👥\n➤ *Desmadre* 💃🕺\n➤ *Una botsita sexy 😘*\n➤ *Puede solicitar mi lista de comando con:* #menu\n\n> *Aqui tiene la descripción del grupo, léela!! 🙌*\n${descs}\n\n> *🔰 𝗗𝗶𝘀𝗳𝗿𝘂𝘁𝗮 𝗱𝗲 𝘁𝘂 𝗘𝘀𝘁𝗮𝗱𝗶́𝗮 𝗲𝗻 𝗲𝗹 𝗚𝗿𝘂𝗽𝗼 🔰*`
+let descs = groupMetadata.desc || "*ᴜɴ ɢʀᴜᴘᴏ ɢᴇɴɪᴀ😸*\n *sɪɴ ʀᴇɢʟᴀ 😉*";
+let userName = `${m.messageStubParameters[0].split`@`[0]}`;
+let defaultWelcome = `┏━━━━━━━━━━━━\n┃──〘 *WELCOME* 〙──\n┃━━━━━━━━━━━━\n┃ *Hola @${userName} 👋 Bienvenido a*\n┃ *_${subject} ✨_*\n┃\n┃=> *_En este grupo podrás_*\n┃ *_encontrar:_*\n┠⊷ *Amistades 🫂* \n┠⊷ *Desmadre 💃🕺*\n┠⊷ *Relajo 💅*\n┠⊷ *Enemig@s 🥵*\n┠⊷ *Un Bot Sexy*\n┃\n┃=> *_Puedes solicitar mi lista de_*\n┃ *_comandos con:_*\n┠⊷ *#menu*\n┃\n┃=> *_Aquí tienes la descripción_*\n┃ *_del grupo, léela!!_*\n┃\n\n${descs}\n\n┃\n┃ *_🥳 Disfruta de tu_*\n┃ *_estadía en el grupo 🥳_*\n┃\n┗━━━━━━━━━━━`;
+let textWel = chat.sWelcome ? chat.sWelcome
+.replace(/@user/g, `@${userName}`)
+.replace(/@group/g, subject) 
+.replace(/@desc/g, descs)
+: defaultWelcome;
+        
 await this.sendMessage(m.chat, { text: textWel, 
 contextInfo:{
 forwardingScore: 9999999,
@@ -48,13 +55,19 @@ externalAdReply: {
 showAdAttribution: true,
 renderLargerThumbnail: true,
 thumbnailUrl: pp, 
-title: [wm, ' ' + wm + '😊', '🌟'].getRandom(),
+title: "BIENVENID@ 😄",
+body: [wm, ' ' + wm + '😊', '🌟'].getRandom(),
 containsAutoReply: true,
 mediaType: 1, 
 sourceUrl: [nna, nna2, nnaa, yt, md].getRandom()}}}, { quoted: fkontak }) 
-} else if (chat.welcome && m.messageStubType == 32 && this.user.jid != global.conn.user.jid) {
-//if (global.conn.user.jid.split`@`[0] != conn.user.jid.split`@`[0]) return
-let textBye = `Bueno, se fue @${m.messageStubParameters[0].split`@`[0]} 👋\n\nQue dios lo bendiga 😎`
+} else if (chat.welcome && (m.messageStubType == 28 || m.messageStubType == 32) && this.user.jid != global.conn.user.jid ) {
+let subject = groupMetadata.subject;
+let userName = `${m.messageStubParameters[0].split`@`[0]}`;
+let defaultBye = `┏━━━━━━━━━━━━\n┃──〘 *ADIOS* 〙───\n┃━━━━━━━━━━━━\n┃ *_☠ Se fue @${userName}_* \n┃ *_Que dios lo bendiga️_* \n┃ *_Y lo atropelle un tren 😇_*\n┗━━━━━━━━━━`;
+let textBye = chat.sBye ? chat.sBye
+.replace(/@user/g, `@${userName}`)
+.replace(/@group/g, subject)
+: defaultBye;
 await this.sendMessage(m.chat, { text: textBye, 
 contextInfo:{
 forwardingScore: 9999999,
@@ -64,7 +77,8 @@ externalAdReply: {
 showAdAttribution: true,
 renderLargerThumbnail: true,
 thumbnailUrl: pp, 
-title: [wm, ' ' + wm + '😊', '🌟'].getRandom(),
+title: "BYE 👋",
+body: [wm, ' ' + wm + '😊', '🌟'].getRandom(),
 containsAutoReply: true,
 mediaType: 1, 
 sourceUrl: [nna, nna2, nnaa, yt, md].getRandom()}}}, { quoted: fkontak }) 
@@ -108,4 +122,3 @@ console.log({messageStubType: m.messageStubType,
 messageStubParameters: m.messageStubParameters,
 type: WAMessageStubType[m.messageStubType], 
 })}}
-

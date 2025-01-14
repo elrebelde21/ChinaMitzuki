@@ -1170,7 +1170,7 @@ const messageText = `⚠️ ESTAS BANEADO ⚠️\nAviso (${messageNumber}/3)${us
 👉 ${ig}
 👉 ${fb}
 `.trim();
-//m.reply(messageText);
+m.reply(messageText);
 user.bannedMessageCount++;
 } else if (user.bannedMessageCount === 3) {
 user.bannedMessageSent = true;

@@ -1,3 +1,5 @@
+//Código elaborado por: https://github.com/elrebelde21 
+
 const OWNER1 = "5214774444444@s.whatsapp.net";
 const ACTIVE_CONVERSATIONS = {};
 

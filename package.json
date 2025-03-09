@@ -29,7 +29,7 @@
 "url": "https://github.com/elrebelde21/ChinaMitzuki/issues" },
 "license": "GPL-3.0-or-later",
 "dependencies": {
-"@whiskeysockets/baileys": "github:ds6/bails",
+"@whiskeysockets/baileys": "github:ds6/lyru-baileys",
 "@adiwajshing/keyed-db": "^0.2.4",
 "@bochilteam/scraper": "^4.2.4",
 "@brandond/findthelyrics": "^2.0.5",
@@ -98,6 +98,7 @@
 "mime-types": "^2.1.35",
 "api-dylux": "^1.7.2",
 "yargs": "^17.6.0",
+"@hiudyy/ytdl": "^0.2.3",   
 "ytdl-core": "latest"    
 },
 "optionalDependencies": {

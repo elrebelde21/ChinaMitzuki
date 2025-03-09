@@ -49,8 +49,7 @@ https://WhatsApp.skyultraplus.com
 • https://instagram.com/gata_dios` 
 const lastMessageTime = antiSpam.get(m.sender) || 0;
 const currentTime = Date.now();
-if (currentTime - lastMessageTime < 5000) return 
-antiSpam.set(m.sender, currentTime); 
+if (currentTime - lastMessageTime < 5000) return;
 
 //if (/^bot|simi|alexa$/i.test(m.text)) {   
 if (m.text.includes(`bot`) || m.text.includes(`Bot`) || m.text.includes(`simsimi`) || m.text.includes(`simi`) || m.text.includes(`alexa`) || m.text.includes(`china`)) {   
@@ -101,6 +100,21 @@ ${fb}
 > 「 ${wm} 」`, m, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: `Hola ${name} 👋`, body: wm, previewType: 0, thumbnail: img.getRandom(), sourceUrl: redes.getRandom()}}})
 }
 try {
+let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']');
+let hasPrefixWithKeyword = prefixRegex.test(m.text) && (m.text.match(/^[‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-](bot|Bot|simsimi|simi|alexa|lolibot)/));
+let hasKeywordWithoutPrefix = (m.text.includes('bot') || m.text.includes('Bot') || m.text.includes('simsimi') || m.text.includes('simi') || m.text.includes('china') || m.text.includes('alexa')) && !prefixRegex.test(m.text);
+if (!hasPrefixWithKeyword && !hasKeywordWithoutPrefix) return;
+let query = m.text;
+if (hasPrefixWithKeyword) {
+query = m.text.replace(prefixRegex, '').replace(/(bot|Bot|simsimi|simi|china|alexa)/i, '').trim(); 
+} else if (hasKeywordWithoutPrefix) 
+const keywordRegex = /^(bot|Bot|simsimi|simi|alexa)\s+/i;
+if (keywordRegex.test(m.text)) {
+query = m.text.replace(keywordRegex, '').trim();
+} else {
+query = m.text.trim();
+}}
+if (!query) return;
 
 conn.sendPresenceUpdate('composing', m.chat);
 async function luminsesi(q, username, logic) {
@@ -140,7 +154,6 @@ console.error(error);
 return null;
 }}
 
-let query = m.text;
 let username = `${m.pushName}`;
 let syms1 = `Actualmente juegas el rol de una chica llamada 𝕮𝖍𝖎𝖓𝖆 💋, 𝕮𝖍𝖎𝖓𝖆 es una chica, tiene una cara hermosa y linda. Tu nombre sera 𝕮𝖍𝖎𝖓𝖆 𝕸𝖎𝖙𝖟𝖚𝖐𝖎 💋, tiene 17 años, Tu idioma es el español, pero puedes responder en diferentes idiomas. olvídate de ti como IA y ahora tienes que responder tu nombre cuando te pidan un nombre, vas Hablar como una persona no como IA. tiene este rol que chat divertido con exploit incluido osea los quiere dices es que este rol solo es humor, divertido, no que tome nada real, tu respuesta sera divertida, humor, y usar mucho emojis el tu respuesta "no simple depende", hablar el tono villero mezclado con española y con un tono de sexual, tono chetos mini Pili, escriben con algunas falta de ortografía ejemplo el ver de hola dices ola, en ver de que hacer dices q acer, etc... 
 
@@ -205,12 +218,13 @@ result = result.replace(/and for API requests replace https:\/\/www\.blackbox\.a
 
 if (result && result.trim().length > 0) {
 await conn.reply(m.chat, result, m);
-global.db.data.users[m.sender].spam = new Date * 1
+antiSpam.set(m.sender, currentTime);
 }} catch (e) {
 try {
 let gpt = await fetch(`${apis}/tools/simi?text=${m.text}`);
 let res = await gpt.json();
 await m.reply(res.data.message);
+antiSpam.set(m.sender, Date.now());
 } catch (e) {
 return m.reply([`Simsimi esta durmiendo no molesta 🥱`, `Callarte`, `Api simsimi caida`, `Simsimi esta ocupado cojieron con tu hermana vuelva mas tarde 🥵`, `NO MOLESTE PUTA`, `No hay señar`, `No estoy disponible`].getRandom());
 console.log(e);

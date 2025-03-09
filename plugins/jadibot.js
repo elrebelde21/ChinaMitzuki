@@ -45,6 +45,8 @@ let rtx2 = `🟢 *_NUEVA FUNCIÓN DE HACERTE UN SUB BOT_* 🟢
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const gataJBOptions = {}
+const retryMap = new Map(); 
+const maxAttempts = 5;
 if (global.conns instanceof Array) console.log()
 else global.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
@@ -52,7 +54,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
 if (m.fromMe || conn.user.jid === m.sender) return
 //if (conn.user.jid !== global.conn.user.jid) return conn.reply(m.chat, `${lenguajeGB['smsJBPrincipal']()} wa.me/${global.conn.user.jid.split`@`[0]}&text=${usedPrefix + command}`, m) 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let id = `${who.split`@`[0]}`  //conn.getName(who)
+let id = `${who.split`@`[0]}` 
 let pathGataJadiBot = path.join("./jadibts/", id)
 if (!fs.existsSync(pathGataJadiBot)){
 fs.mkdirSync(pathGataJadiBot, { recursive: true })
@@ -63,13 +65,16 @@ gataJBOptions.conn = conn
 gataJBOptions.args = args
 gataJBOptions.usedPrefix = usedPrefix
 gataJBOptions.command = command
+gataJBOptions.fromCommand = true
 gataJadiBot(gataJBOptions)
 } 
+handler.help = ['serbot', 'jadibot', 'code'];
+handler.tags = ['jadibot'];
 handler.command = /^(jadibot|serbot|rentbot|code)/i
 export default handler 
 
 export async function gataJadiBot(options) {
-let { pathGataJadiBot, m, conn, args, usedPrefix, command } = options
+let { pathGataJadiBot, m, conn, args, usedPrefix, command, fromCommand } = options
 if (command === 'code') {
 command = 'jadibot'; 
 args.unshift('code')}
@@ -100,13 +105,25 @@ const msgRetry = (MessageRetryMap) => { }
 const msgRetryCache = new NodeCache()
 const { state, saveState, saveCreds } = await useMultiFileAuthState(pathGataJadiBot)
 
+/*const connectionOptions = {
+logger: pino({ level: "fatal" }),
+printQRInTerminal: false,
+auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, pino({level: 'silent'})) },
+msgRetry,
+msgRetryCache,
+browser: mcode ? ['Ubuntu', 'Chrome', '110.0.5585.95'] : ['LoliBot-MD (Sub Bot)', 'Chrome','2.0.0'],
+version: version,
+generateHighQualityLinkPreview: true
+};
+*/
+
 const connectionOptions = {
 printQRInTerminal: false,
 logger: pino({ level: 'silent' }),
 auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, pino({level: 'silent'})) },
 msgRetry,
 msgRetryCache,
-version: [2, 3000, 1015901307],
+version: version,
 syncFullHistory: true,
 browser: mcode ? ['Ubuntu', 'Chrome', '110.0.5585.95'] : ['LoliBot-MD (Sub Bot)', 'Chrome','2.0.0'],
 defaultQueryTimeoutMs: undefined,
@@ -116,11 +133,12 @@ if (store) {
 //return msg.message && undefined
 } return {
 conversation: 'LoliBot-MD',
-}}} 
+}}}
 
 let sock = makeWASocket(connectionOptions)
 sock.isInit = false
 let isInit = true
+let reconnectAttempts = 0;
 
 async function connectionUpdate(update) {
 const { connection, lastDisconnect, isNewLogin, qr } = update
@@ -139,18 +157,9 @@ return
 if (qr && mcode) {
 let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
 secret = secret.match(/.{1,4}/g)?.join("-")
-const dispositivo = await getDevice(m.key.id);
-if (!m.isWABusiness) {
-if (/web|desktop|unknown/i.test(dispositivo)) {
-txtCode = await conn.sendMessage(m.chat, { image: { url: 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom() }, caption: rtx2.trim() + '\n' + drmer.toString("utf-8")}, { quoted: m });
-codeBot = await m.reply(secret);
-} else {
-txtCode = await conn.sendButton(m.chat, rtx2.trim() + '\n' + drmer.toString("utf-8"), `\n*Código:* ${secret}\n` + wm, 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom(), null, [[`Copiar código`, secret]], null, null, m);
-}} else {
-txtCode = await conn.sendMessage(m.chat, { text: rtx2.trim() + drmer.toString("utf-8")}, { quoted: m });
-codeBot = await m.reply(secret);
-}
-console.log(secret);
+txtCode = await conn.sendMessage(m.chat, { image: { url: 'https://qu.ax/wyUjT.jpg' || imageUrl.getRandom() }, caption: rtx2.trim() + '\n' + drmer.toString("utf-8") }, { quoted: m })
+codeBot = await m.reply(secret)
+console.log(secret)
 }
 if ((txtCode && txtCode.key) || (txtCode && txtCode.id)) {
 const messageId = txtCode.key || txtCode.id
@@ -175,8 +184,17 @@ global.conns.splice(i, 1)
 const reason = lastDisconnect?.error?.output?.statusCode || lastDisconnect?.error?.output?.payload?.statusCode
 if (connection === 'close') {
 if (reason === 428) {
-console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La conexión (+${path.basename(pathGataJadiBot)}) fue cerrada inesperadamente. Intentando reconectar...\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
-await creloadHandler(true).catch(console.error)
+if (reconnectAttempts < maxAttempts) {
+const delay = 1000 * Math.pow(2, reconnectAttempts); 
+console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La conexión (+${path.basename(pathGataJadiBot)}) fue cerrada inesperadamente. Intentando reconectar en ${delay / 1000} segundos... (Intento ${reconnectAttempts + 1}/${maxAttempts})\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
+await sleep(1000);
+reconnectAttempts++;
+await creloadHandler(true).catch(console.error);
+} else {
+console.log(chalk.redBright(`Sub-bot (+${path.basename(pathGataJadiBot)}) agotó intentos de reconexión. intentando más tardes...`));
+}            
+/*console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La conexión (+${path.basename(pathGataJadiBot)}) fue cerrada inesperadamente. Intentando reconectar...\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
+await creloadHandler(true).catch(console.error)*/
 }
 if (reason === 408) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La conexión (+${path.basename(pathGataJadiBot)}) se perdió o expiró. Razón: ${reason}. Intentando reconectar...\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
@@ -184,24 +202,19 @@ await creloadHandler(true).catch(console.error)
 }
 if (reason === 440) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La conexión (+${path.basename(pathGataJadiBot)}) fue reemplazada por otra sesión activa.\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
-try {
-await conn.sendMessage(`${path.basename(pathGataJadiBot)}@s.whatsapp.net`, {text : '*⚠️ HEMOS DETECTADO UNA NUEVA SESIÓN, BORRE LA NUEVA SESIÓN PARA CONTINUAR*\n\n> *SI HAY ALGÚN PROBLEMA VUELVA A CONECTARSE*' }, { quoted: null })
-} catch (error) {
-console.error(chalk.bold.yellow(`Error 440 no se pudo enviar mensaje a: +${path.basename(pathGataJadiBot)}`))
-}}
+if (options.fromCommand) m?.chat ? await conn.sendMessage(m.chat, {text : '*⚠️ HEMOS DETECTADO UNA NUEVA SESIÓN, BORRE LA NUEVA SESIÓN PARA CONTINUAR*\n\n> *SI HAY ALGÚN PROBLEMA VUELVA A CONECTARSE*' }, { quoted: m || null }) : ""
+}
 if (reason == 405 || reason == 401) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ La sesión (+${path.basename(pathGataJadiBot)}) fue cerrada. Credenciales no válidas o dispositivo desconectado manualmente.\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
-try {
-await conn.sendMessage(`${path.basename(pathGataJadiBot)}@s.whatsapp.net`, {text : '*🟢 SESIÓN PENDIENTE*\n\n> *INTENTÉ MANUALMENTE VOLVER A SER SUB-BOT, USANDO EL COMANDOS:* /jadibot' }, { quoted: null }) || ''
-} catch (error) {
-console.error(chalk.bold.yellow(`Error 405 no se pudo enviar mensaje a: +${path.basename(pathGataJadiBot)}`))
-}
 fs.rmdirSync(pathGataJadiBot, { recursive: true })
+if (options.fromCommand) return m?.chat ? await conn.sendMessage(m.chat, {text : '*🟢 REENVIAR NUEVAMENTE EL COMANDO....*' }, { quoted: m || null }) : ''
 }
 if (reason === 500) {
 console.log(chalk.bold.magentaBright(`\n╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡\n┆ Conexión perdida en la sesión (+${path.basename(pathGataJadiBot)}). Borrando datos...\n╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄ • • • ┄┄┄┄┄┄┄┄┄┄┄┄┄┄⟡`))
-await conn.sendMessage(`${path.basename(pathGataJadiBot)}@s.whatsapp.net`, {text : '🔴 *LA CONEXIÓN SE HA CERRADO, DEBERÁ DE CONECTARSE MANUALMENTE USANDO EL COMANDO #serbot Y REESCANEAR EL NUEVO CÓDIGO QR*' }, { quoted: null })
 return creloadHandler(true).catch(console.error)
+if (options.fromCommand) {
+m?.chat ? await conn.sendMessage(m.chat, {text: '🔴 *LA CONEXIÓN SE HA CERRADO, DEBERÁ DE CONECTARSE MANUALMENTE USANDO EL COMANDO #serbot Y REESCANEAR EL NUEVO CÓDIGO QR*' }, { quoted: m || null }) : ""
+}
 //fs.rmdirSync(pathGataJadiBot, { recursive: true })
 }
 if (reason === 515) {
@@ -215,6 +228,7 @@ fs.rmdirSync(pathGataJadiBot, { recursive: true })
 
 if (global.db.data == null) loadDatabase()
 if (connection == `open`) {
+reconnectAttempts = 0;
 if (!global.db.data?.users) loadDatabase()
 let userName, userJid 
 userName = sock.authState.creds.me.name || 'Anónimo'
@@ -234,6 +248,7 @@ let chtxt = `*Se detectó un nuevo Sub-Bot conectado 💻✨*
 `.trim()
 let ppch = await sock.profilePictureUrl(userJid, 'image').catch(_ => imageUrl.getRandom())
 await sleep(3000)
+if (options.fromCommand) {
 await global.conn.sendMessage(ch.ch1, { text: chtxt, contextInfo: {
 externalAdReply: {
 title: "【 📢 Notificación General 📢 】",
@@ -243,27 +258,10 @@ sourceUrl: [nna, nna2, nn, md, yt, tiktok].getRandom(),
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
-}}}, { quoted: null })
+}}}, { quoted: null }).catch(err => console.error(err));
+}
 await sleep(3000) 
 await joinChannels(sock)
-/*m?.chat ? await conn.sendMessage(m.chat, {text : `☄️ *IMPORTANTE*
-> ⚠️ *Usa en este momento el comando ${usedPrefix}codetoken para que tengas un respaldo de la sesión*\n
-> Para pausar tú sesión (actualmente este comando solo hace una pausa temporal):
-\`${usedPrefix}stop\`\n
-> Eliminar datos y cerrar sesión:
-\`${usedPrefix}borrarsesion\`\n
-> Solicitar código QR o volver a conectar sin token:
-\`${usedPrefix + command}\`\n
-> Solicitar código de 8 dígitos:
-\`${usedPrefix + command} code\`\n
-> Crear sesión (solo si no has cerrado la sesión en WhatsApp):
-\`${usedPrefix + command} [token]\`\n
-💡 *Recomendaciones:*
-> Puedes hacer una pausa definitiva primero obteniendo el token de la sesión, luego borrar los datos y cuando quieras volver a ser bot usa el token para crear la sesión (Solo funciona mientras no cierres la sesión en WhatsApp).\n
-> Si tienes problemas de conexión, elimina los datos y usa el token o solicita un nuevo código QR o código de 8 dígitos.\n
-> Si te llega un mensaje de *"sesión reemplazada"* realiza la indicación anterior.\n
-> Si se desconecta frecuentemente usa \`${usedPrefix + command}\` si el problema persiste vuelve a ser sub bot.`}, { quoted: m }) : ''
-*/
 }}
 setInterval(async () => {
 if (!sock.user) {
@@ -333,6 +331,29 @@ creloadHandler(false)
 })
 }
 
+export async function startSubBots() {
+const subBotDir = path.resolve("./jadibts");
+    if (!fs.existsSync(subBotDir)) return;
+    const subBotFolders = fs.readdirSync(subBotDir).filter(folder => 
+        fs.statSync(path.join(subBotDir, folder)).isDirectory()
+    );
+    for (const folder of subBotFolders) {
+        const pathGataJadiBot = path.join(subBotDir, folder);
+        const credsPath = path.join(pathGataJadiBot, "creds.json");
+        if (fs.existsSync(credsPath)) {
+            await gataJadiBot({
+                pathGataJadiBot,
+                m: null,
+                conn: global.conn,
+                args: [],
+                usedPrefix: '#',
+                command: 'jadibot',
+                fromCommand: false
+            });
+        }
+    }
+}
+
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 function sleep(ms) {
 return new Promise(resolve => setTimeout(resolve, ms));}
@@ -341,3 +362,49 @@ async function joinChannels(conn) {
 for (const channelId of Object.values(global.ch)) {
 await conn.newsletterFollow(channelId).catch(() => {})
 }}
+
+async function checkSubBots() {
+    const subBotDir = path.resolve("./jadibts");
+    if (!fs.existsSync(subBotDir)) return;
+    const subBotFolders = fs.readdirSync(subBotDir).filter(folder => 
+        fs.statSync(path.join(subBotDir, folder)).isDirectory()
+    );
+
+    for (const folder of subBotFolders) {
+        const pathGataJadiBot = path.join(subBotDir, folder);
+        const credsPath = path.join(pathGataJadiBot, "creds.json");
+        const subBot = global.conns.find(conn => 
+            conn.user?.jid?.includes(folder) || path.basename(pathGataJadiBot) === folder);
+
+        if (!fs.existsSync(credsPath)) continue;
+
+        if (!subBot || !subBot.user) {
+            console.log(chalk.bold.yellowBright(`Sub-bot (+${folder}) no conectado. Intentando activarlo...`));
+            const retries = retryMap.get(folder) || 0;
+            if (retries >= 5) {
+                console.log(chalk.redBright(`Sub-bot (+${folder}) alcanzó límite de reintentos. intentando más tardes`));
+               //fs.rmdirSync(pathGataJadiBot, { recursive: true });
+                retryMap.delete(folder);
+                continue;
+            }
+
+            try {
+                await gataJadiBot({
+                    pathGataJadiBot,
+                    m: null,
+                    conn: global.conn,
+                    args: [],
+                    usedPrefix: '#',
+                    command: 'jadibot',
+                    fromCommand: false
+                });
+                retryMap.delete(folder); // Resetear intentos si se conecta
+            } catch (e) {
+                console.error(chalk.redBright(`Error al activar sub-bot (+${folder}):`), e);
+                retryMap.set(folder, retries + 1);
+            }
+        }
+    }
+}
+
+setInterval(checkSubBots, 60000); //1min

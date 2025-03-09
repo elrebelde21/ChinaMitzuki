@@ -2,13 +2,14 @@ import { sticker } from '../lib/sticker.js'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 import { webp2png } from '../lib/webp2mp4.js'
-
+ 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
+let user = global.db.data.users[m.sender]
 let stiker = false
 let stick = args.join(" ").split("|");
-let f = stick[0] !== "" ? stick[0] : packname;
-let g = typeof stick[1] !== "undefined" ? stick[1] : author;
-try { 	
+let f = user.packname || global.packname
+let g = (user.packname && user.author ? user.author : (user.packname && !user.author ? '' : global.author))
+try {
 let q = m.quoted ? m.quoted : m
 let mime = (q.msg || q).mimetype || q.mediaType || ''
 if (/webp|image|video/g.test(mime)) {
@@ -21,7 +22,6 @@ stiker = await sticker(img, false, f, g)
 } catch (e) {
 console.error(e)
 } finally {
-conn.fakeReply(m.chat, `Calma crack estoy haciendo tu sticker 👏\n\n> *Recuerda los video son de 7 segundos*`, '0@s.whatsapp.net', `No haga spam gil`, 'status@broadcast', null, fake)
 //conn.reply(m.chat, `Calma crack estoy haciendo tu sticker 👏\n\n> *Recuerda los video son de 7 segundos*`, m)
 if (!stiker) {
 if (/webp/g.test(mime)) out = await webp2png(img)
@@ -30,7 +30,7 @@ else if (/video/g.test(mime)) out = await uploadFile(img)
 if (typeof out !== 'string') out = await uploadImage(img)
 stiker = await sticker(false, out, f, g)
 }}} else if (args[0]) {
-if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packname, global.author)
+if (isUrl(args[0])) stiker = await sticker(false, args[0], f, g)
 else return m.reply('URL invalido')
 }} catch (e) {
 console.error(e)

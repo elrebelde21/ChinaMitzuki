@@ -7,6 +7,7 @@ import { xpRange } from '../lib/levelling.js'
 let tags = {'main': 'ℹ️ INFOBOT',
 'jadibot': '✨ SER SUB BOT', 
 'downloader': '🚀 DESCARGAS',
+'gacha': '✨️ NEW - RPG GACHA',
 'game': '👾 JUEGOS', 
 'rg': '🟢 REGISTRO', 
 'group': '⚙️ GRUPO',

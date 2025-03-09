@@ -10,6 +10,7 @@ export async function before(m, { conn }) {
 let user = global.db.data.users[m.sender]
 let chat = global.db.data.chats[m.chat];
 let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']');
+if (chat.simi) return 
 
 if (prefixRegex.test(m.text)) return true;
 //if (m.mentionedJid.includes(this.user.jid)) {

@@ -102,13 +102,13 @@ ${fb}
 try {
 let prefixRegex = new RegExp('^[' + (opts['prefix'] || '‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']');
 let hasPrefixWithKeyword = prefixRegex.test(m.text) && (m.text.match(/^[‎z/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.,\\-](bot|Bot|simsimi|simi|alexa|lolibot)/));
-let hasKeywordWithoutPrefix = (m.text.includes('bot') || m.text.includes('Bot') || m.text.includes('simsimi') || m.text.includes('simi') || m.text.includes('china') || m.text.includes('alexa')) && !prefixRegex.test(m.text);
+let hasKeywordWithoutPrefix = (m.text.includes('bot') || m.text.includes('Bot') || m.text.includes('simsimi') || m.text.includes('china') || m.text.includes('simi') || m.text.includes('lolibot') || m.text.includes('alexa')) && !prefixRegex.test(m.text);
 if (!hasPrefixWithKeyword && !hasKeywordWithoutPrefix) return;
 let query = m.text;
 if (hasPrefixWithKeyword) {
 query = m.text.replace(prefixRegex, '').replace(/(bot|Bot|simsimi|simi|china|alexa)/i, '').trim(); 
-} else if (hasKeywordWithoutPrefix) 
-const keywordRegex = /^(bot|Bot|simsimi|simi|alexa)\s+/i;
+} else if (hasKeywordWithoutPrefix) {
+const keywordRegex = /^(bot|Bot|simsimi|simi|lolibot|alexa)\s+/i;
 if (keywordRegex.test(m.text)) {
 query = m.text.replace(keywordRegex, '').trim();
 } else {

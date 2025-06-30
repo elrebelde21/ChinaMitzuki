@@ -101,9 +101,9 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 ------------------- 
 
-## `👑 𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃`
+## 𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃
+
 <p align="center">
-  <b>ChinaMitzuki:</b><br>
   <a href="https://www.instagram.com/itschinita_official">
     <img src="https://files.catbox.moe/4rbw47.jpg" width="130" height="130" style="border-radius: 50%;" alt="china"/><br>
     <b>@itschinita_official</b>
@@ -111,6 +111,7 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 </p>
 
 ## `𝙳𝙴𝚂𝙰𝚁𝚁𝙾𝙻𝙻𝙰𝙳𝙾𝚁 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃`
+
 <p align="center">
   <a href="https://github.com/elrebelde21">
     <img src="https://github.com/elrebelde21.png" width="150" height="150" alt="elrebelde21"/><br>

@@ -101,12 +101,22 @@ Detener el bot apretado CTRL y aplastas Z en tu teclado, darle enter y escribe:
 
 ------------------- 
 
-## `𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃`
-[![ChinaMitzuki](https://img.shields.io/badge/ChinaMitzuki-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mitzuki_chinita)
+## `👑 𝙴𝙳𝙸𝚃𝙾𝚁𝙰 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙰 𝙳𝙴𝙻 𝙱𝙾𝚃`
+<p align="center">
+  <b>ChinaMitzuki:</b><br>
+  <a href="https://www.instagram.com/itschinita_official">
+    <img src="https://files.catbox.moe/4rbw47.jpg" width="130" height="130" style="border-radius: 50%;" alt="china"/><br>
+    <b>@itschinita_official</b>
+  </a>
+</p>
 
 ## `𝙳𝙴𝚂𝙰𝚁𝚁𝙾𝙻𝙻𝙰𝙳𝙾𝚁 𝚈 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃`
-[![elrebelde21](https://github.com/elrebelde21.png?size=100)](https://github.com/GataNina-Li) 
-
+<p align="center">
+  <a href="https://github.com/elrebelde21">
+    <img src="https://github.com/elrebelde21.png" width="150" height="150" alt="elrebelde21"/><br>
+    <b>@elrebelde21</b>
+  </a>
+</p>
 
 ## `𝙰𝙶𝚁𝙰𝙳𝙴𝙲𝙸𝙼𝙸𝙴𝙽𝚃𝙾𝚂 & 𝙲𝚁𝙴𝙳𝙸𝚃𝙾𝚂` 
 [![TheShadowBrokers1](https://github.com/BrunoSobrino.png?size=60)](https://github.com/BrunoSobrino) 
